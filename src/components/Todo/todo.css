@@ -1,0 +1,161 @@
+:root {
+    --bg-page: #f2f0f0;
+    --panel-border: #b8b8b8;
+    --title-start: #f95d4d;
+    --title-end: #f5a14a;
+    --input-bg: #e3e7eb;
+    --input-border: #cfe0ea;
+    --button-start: #3aa9e8;
+    --button-end: #1a8de0;
+    --board-bg: #f4f8ff;
+    --board-accent: #8b73d9;
+    --board-shadow: #7a62d4;
+    --target-main: #f76b6b;
+    --target-ring: #f9b8b8;
+    --sky: #d9f0f8;
+    --purple-soft: #a873ea;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-page);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.todo-page {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #efefef;
+}
+
+.todo-container {
+    width: min(78vw, 980px);
+    min-height: 720px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 6px solid var(--panel-border);
+    padding: 44px 42px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.todo-title {
+    margin: 0 0 30px;
+    font-size: clamp(2.8rem, 4vw, 2rem);
+    font-weight: 900;
+    line-height: 1;
+    letter-spacing: -0.05em;
+    background: linear-gradient(90deg, var(--title-start), var(--title-end));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-transform: none;
+}
+
+.todo-form {
+    width: min(100%, 620px);
+    display: grid;
+    grid-template-columns: 1fr 180px;
+    gap: 16px;
+    align-items: center;
+}
+
+.text {
+    width: 100%;
+    height: 68px;
+    border: none;
+    border-radius: 14px;
+    background: var(--input-bg);
+    padding: 0 22px;
+    font-size: 1.1rem;
+    color: #3a3a3a;
+    box-shadow: inset 0 0 0 2px rgba(175, 196, 208, 0.55);
+}
+
+.text::placeholder {
+    color: rgba(54, 72, 84, 0.7);
+    font-size: 1.08rem;
+}
+
+.add-button {
+    height: 68px;
+    border: none;
+    border-radius: 14px;
+    background: linear-gradient(180deg, var(--button-start), var(--button-end));
+    color: white;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 6px 0 rgba(28, 127, 199, 0.25);
+}
+
+.todo-data {
+    width: min(100%, 620px);
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.todo-data > div {
+    min-height: 58px;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border: 1px solid rgba(11, 183, 137, 0.2);
+    border-radius: 14px;
+    background: linear-gradient(135deg, #ffffff, #f3f7ff);
+    color: #4c5367;
+    font-size: 1rem;
+    font-weight: 600;
+    box-shadow: 0 5px 14px rgba(92, 110, 153, 0.12);
+}
+
+
+.todo-data > div:hover {
+    border-color: rgba(58, 169, 232, 0.6);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(58, 169, 232, 0.16);
+}
+
+@media (max-width: 720px) {
+    .todo-data {
+        width: 100%;
+    }
+}
+
+.react-logo {
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+}
+.react-logo:hover {
+    filter: drop-shadow(0 0 2em #61dafb);
+}
+@keyframes react-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .react-logo {
+        animation: react-logo-spin infinite 20s linear;
+    }
+}
