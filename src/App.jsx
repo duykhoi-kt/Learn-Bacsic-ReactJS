@@ -9,11 +9,17 @@ function App() {
     address: "HCM",
     country: "Vietnam"
   }
+  const addNewTodo = (name) =>{
+    alert(`Add new todo: ${name}`)
+  }
   return (
     <div className="todo-page">
       <div className="todo-container">
         <h1 className="todo-title">Todo list</h1>
-        <TodoNew />
+        <TodoNew
+        
+          addNewTodo={addNewTodo}
+        />
         <TodoData 
           // đây là cách truyền props vào component TodoData
           name= {hoidanit}
