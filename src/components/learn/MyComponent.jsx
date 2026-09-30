@@ -1,8 +1,14 @@
 // () => {}
 // component =html + css +js
+import './style.css'
 const MyComponent = () => {
     return (
-        <div>Nguyễn Duy Khôi</div> // tag 
+        // Fragment
+        <>
+            <div className= "child">Nguyễn Duy Khôi</div>
+            <div></div>
+        </>
+        
     );
 }
 export default MyComponent;
