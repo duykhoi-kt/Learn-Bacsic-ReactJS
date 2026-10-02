@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 
 
 const TodoData = (props) => {
-    // console.log(props);
+    console.log(props);
     const { name, age, data } = props;
     return (
         <div className="todo-data">
@@ -12,6 +12,9 @@ const TodoData = (props) => {
             <div>Country: {data.country}</div>
             <div>Learning React</div>
             <div>Watching YouTube</div>
+            <div>
+                {JSON.stringify(props.todoList)}
+            </div>
         </div>
     )
 }
@@ -22,6 +25,12 @@ TodoData.propTypes = {
     data: PropTypes.shape({
         address: PropTypes.string.isRequired,
         country: PropTypes.string.isRequired
-    }).isRequired
-}
+    }).isRequired,
+    todoList: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number.isRequired,
+            name: PropTypes.string.isRequired
+        })
+    ).isRequired    
+};
 export default TodoData
