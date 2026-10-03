@@ -21,6 +21,14 @@ function App() {
     setTodoList([...todoList, newTodo]);
   };
 
+  // function handleDeleteTodo
+
+  const handleDeleteTodo = (id)=>{
+    setTodoList(todoList.filter((item)=> item.id !== id));
+  }
+
+
+
   return (
     <div className="todo-page">
       <div className="todo-container">
@@ -29,6 +37,7 @@ function App() {
         <TodoNew addNewTodo={addNewTodo} />
         {todoList.length > 0 ?
           <TodoData
+            handleDeleteTodo={handleDeleteTodo} 
             todoList={todoList}
           />
           :
