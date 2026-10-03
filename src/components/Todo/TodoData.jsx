@@ -2,16 +2,20 @@ import PropTypes from 'prop-types';
 
 
 const TodoData = (props) => {
-    console.log(props);
-    const { name, age, data } = props;
+
+    const { todoList } = props;
+    console.log(todoList);
     return (
         <div className="todo-data">
-            <div>Name: {name}</div>
-            <div>Age: {age}</div>
-            <div>Address: {data.address}</div>
-            <div>Country: {data.country}</div>
-            <div>Learning React</div>
-            <div>Watching YouTube</div>
+            {todoList.map((item, index) => {
+                return (
+                    <div className="todo-item" key={index}>
+                        <div>{item.name}</div>
+                        <button>Delete</button>
+                    </div>
+
+                )
+            })}
             <div>
                 {JSON.stringify(props.todoList)}
             </div>
@@ -31,6 +35,6 @@ TodoData.propTypes = {
             id: PropTypes.number.isRequired,
             name: PropTypes.string.isRequired
         })
-    ).isRequired    
+    ).isRequired
 };
 export default TodoData

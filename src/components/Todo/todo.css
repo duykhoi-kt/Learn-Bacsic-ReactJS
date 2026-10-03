@@ -159,3 +159,8 @@ body {
         animation: react-logo-spin infinite 20s linear;
     }
 }
+.todo-item
+{
+    display: flex;
+    justify-content: space-between;
+}

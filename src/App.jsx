@@ -19,9 +19,8 @@ function App() {
   };
 
   const addNewTodo = (name) => {
-    // Logic cập nhật state todoList thực tế
     const newTodo = {
-      id: Date.now(),
+      id: todoList.length + 1,
       name: name
     };
     setTodoList([...todoList, newTodo]);
@@ -39,7 +38,6 @@ function App() {
           age={age}
           data={data}
           todoList={todoList}
-          setTodoList={setTodoList}
         />
 
         <img src={reactLogo} className="react-logo" alt="React logo" />

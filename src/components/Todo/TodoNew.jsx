@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from 'prop-types';
 
 const TodoNew = (props) => {
     const { addNewTodo } = props;
@@ -10,14 +11,9 @@ const TodoNew = (props) => {
             alert("Vui lòng nhập nội dung công việc!");
             return;
         }
-
-        // Gọi hàm từ component cha
-        if (addNewTodo) {
-            addNewTodo(valueInput.trim());
-        }
-
-        // Reset ô input về rỗng
-        setValueInput("");
+        // Gọi hàm addNewTodo từ props để thêm công việc mới
+        addNewTodo(valueInput);
+        setValueInput(""); // Reset input sau khi thêm công việc
     };
 
     const handleOnChange = (name) => {
@@ -41,5 +37,7 @@ const TodoNew = (props) => {
         </div>
     );
 };
-
+TodoNew.propTypes = {
+    addNewTodo: PropTypes.func.isRequired
+};
 export default TodoNew;
