@@ -4,21 +4,17 @@ import PropTypes from 'prop-types';
 const TodoData = (props) => {
 
     const { todoList } = props;
-    console.log(todoList);
     return (
         <div className="todo-data">
-            {todoList.map((item, index) => {
+            {todoList.map((item) => {
                 return (
-                    <div className="todo-item" key={index}>
+                    <div className="todo-item" key={item.id}>
                         <div>{item.name}</div>
                         <button>Delete</button>
                     </div>
-
                 )
             })}
-            <div>
-                {JSON.stringify(props.todoList)}
-            </div>
+
         </div>
     )
 }
