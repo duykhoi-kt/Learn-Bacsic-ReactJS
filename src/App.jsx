@@ -27,12 +27,15 @@ function App() {
         <h1 className="todo-title">Todo list</h1>
 
         <TodoNew addNewTodo={addNewTodo} />
-
-        <TodoData
-          todoList={todoList}
-        />
-
-        <img src={reactLogo} className="react-logo" alt="React logo" />
+        {todoList.length > 0 ?
+          <TodoData
+            todoList={todoList}
+          />
+          :
+          <div>
+            <img src={reactLogo} className="react-logo" alt="React logo" />
+          </div>
+        }
       </div>
     </div>
   );
