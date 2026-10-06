@@ -16,7 +16,7 @@ const TodoNew = (props) => {
         setValueInput(""); // Reset input sau khi thêm công việc
     };
 
-    const handleOnChange = (name) => {
+    const handleOnChange = (name) => {  
         setValueInput(name);
     };
 

@@ -1,6 +1,5 @@
 // () => {}
 // component =html + css +js
-import './style.css'
 const MyComponent = () => {
     return (
         // Fragment
