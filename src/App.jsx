@@ -5,6 +5,7 @@ import TodoNew from './components/Todo/TodoNew';
 import reactLogo from './assets/react.svg';
 import Header from './components/layout/header';
 import Footer from './components/layout/footer';
+import { Outlet } from 'react-router-dom';
 function App() {
   const [todoList, setTodoList] = useState([
     // { id: 1, name: "Learn React" },
@@ -50,7 +51,8 @@ function App() {
           }
         </div>
       </div>
-      <Footer  />
+      <Outlet />
+      <Footer />
     </>
   );
 }
