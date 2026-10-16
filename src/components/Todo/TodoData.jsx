@@ -1,10 +1,6 @@
 import PropTypes from 'prop-types';
 
-
 const TodoData = (props) => {
-
-
-
     const { todoList, handleDeleteTodo } = props;
     return (
         <div className="todo-data">
