@@ -1,13 +1,15 @@
 import { Button, Input, Modal, notification } from "antd"
 import { useState } from "react";
-import { creatUserAPI } from "../services/apiService";
+import { createUserAPI } from "../services/apiService";
 
-const UserForm = () => {
+const UserForm = (props) => {
+    const { loadUser } = props;
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [phone, setPhone] = useState("");
     const [isModalOpen, setIsModalOpen] = useState(false);
+
     const handleSubmitBtn = async () => {
         if (!fullName.trim() || !email.trim() || !password.trim() || !phone.trim()) {
             notification.warning({
@@ -17,14 +19,16 @@ const UserForm = () => {
             return;
         }
 
-        const res = await creatUserAPI(fullName, email, password, phone)
-        console.log(">>> check res: ", res)
+
+
+        const res = await createUserAPI(fullName, email, password, phone)
         if (res.data) {
             notification.success({
                 message: "Create user successfully",
                 description: "Tạo user thành công"
             });
-            setIsModalOpen(false);
+            resetAndCloseModal();
+            await loadUser();
         }
         else {
             notification.error({
@@ -32,7 +36,14 @@ const UserForm = () => {
                 description: JSON.stringify(res.message)
             })
         }
-        console.log(">>> check res: ", res.data)
+
+    }
+    const resetAndCloseModal = () => {
+        setIsModalOpen(false);
+        setFullName("");
+        setEmail("");
+        setPassword("");
+        setPhone("");
     }
     return (
         <div className="user-form" style={{ margin: "20px" }} >
@@ -48,7 +59,7 @@ const UserForm = () => {
 
                 open={isModalOpen}
                 onOk={handleSubmitBtn}
-                onCancel={() => setIsModalOpen(false)}
+                onCancel={() => resetAndCloseModal()}
                 maskClosable={false}
                 okText={"CREATE"}
 
