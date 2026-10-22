@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { Input, Modal, notification } from "antd"
-import { createUserAPI } from "../services/apiService";
-
+import {  updateUserAPI } from "../services/apiService";
+import PropTypes from "prop-types";
 const UpdateUserModal = (props) => {
 
   const [fullName, setFullName] = useState("");
   const [id, setId] = useState("");
   const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
-  const { isModalUpdateOpen, setIsModalUpdateOpen, dataUpdate, setDataUpdate } = props;
+  const {
+    isModalUpdateOpen,
+    setIsModalUpdateOpen,
+    dataUpdate,
+    setDataUpdate,
+    loadUser
+  } = props;
 
   useEffect(() => {
     if (dataUpdate) {
@@ -20,28 +26,18 @@ const UpdateUserModal = (props) => {
     }
   }, [dataUpdate])
   const handleSubmitBtn = async () => {
-    if (!fullName.trim() || !email.trim() || !password.trim() || !phone.trim()) {
-      notification.warning({
-        message: "Missing information",
-        description: "Please fill in all fields before creating a user."
-      });
-      return;
-    }
-
-
-
-    const res = await createUserAPI(fullName, email, password, phone)
+    const res = await updateUserAPI(id, fullName, phone)
     if (res.data) {
       notification.success({
-        message: "Create user successfully",
-        description: "Tạo user thành công"
+        message: "Update user successfully",
+        description: "Cập nhật user thành công"
       });
       resetAndCloseModal();
       await loadUser();
     }
     else {
       notification.error({
-        message: "Create user failed",
+        message: "Update user failed",
         description: JSON.stringify(res.message)
       })
     }
@@ -95,5 +91,18 @@ const UpdateUserModal = (props) => {
       </div>
     </Modal>
   )
+
 }
 export default UpdateUserModal
+UpdateUserModal.propTypes = {
+  isModalUpdateOpen: PropTypes.bool.isRequired,
+  setIsModalUpdateOpen: PropTypes.func.isRequired,
+  dataUpdate: PropTypes.shape({
+    _id: PropTypes.string,
+    fullName: PropTypes.string,
+    password: PropTypes.string,
+    phone: PropTypes.string,
+  }),
+  setDataUpdate: PropTypes.func.isRequired,
+  loadUser: PropTypes.func.isRequired,
+};
