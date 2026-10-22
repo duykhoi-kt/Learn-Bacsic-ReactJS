@@ -19,8 +19,6 @@ const UserForm = (props) => {
             return;
         }
 
-
-
         const res = await createUserAPI(fullName, email, password, phone)
         if (res.data) {
             notification.success({

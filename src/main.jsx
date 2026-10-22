@@ -1,16 +1,16 @@
-import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import {
   createBrowserRouter,
+  Navigate,
   RouterProvider,
 } from "react-router-dom";
 import LoginPage from './components/pages/login.jsx';
 import RegisterPage from './components/pages/register.jsx';
 import UserPage from './components/pages/user.jsx';
-import ProductPage from './components/pages/product.jsx';
 import '/src/components/style/global.css'
 import TodoApp from './components/Todo/TodoApp.jsx';
+import BookPage from './components/pages/book.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
@@ -25,8 +25,12 @@ const router = createBrowserRouter([
         element: <UserPage />
       },
       {
-        path: "/products",
-        element: <ProductPage />
+        path: "/books",
+        element: <BookPage />
+      },
+      {
+        path: "/book",
+        element: <Navigate to="/books" replace />
       }
     ]
   },
