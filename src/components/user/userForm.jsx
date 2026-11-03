@@ -1,6 +1,7 @@
 import { Button, Input, Modal, notification } from "antd"
 import { useState } from "react";
 import { createUserAPI } from "../services/apiService";
+import PropTypes from "prop-types";
 
 const UserForm = (props) => {
     const { loadUser } = props;
@@ -103,3 +104,7 @@ const UserForm = (props) => {
     )
 }
 export default UserForm
+
+UserForm.propTypes = {
+    loadUser: PropTypes.func.isRequired,
+};

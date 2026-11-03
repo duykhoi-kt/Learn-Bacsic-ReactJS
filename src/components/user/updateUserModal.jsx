@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { Input, Modal, notification } from "antd"
-import {  updateUserAPI } from "../services/apiService";
+import { updateUserAPI } from "../services/apiService";
 import PropTypes from "prop-types";
 const UpdateUserModal = (props) => {
 
   const [fullName, setFullName] = useState("");
   const [id, setId] = useState("");
-  const [password, setPassword] = useState("");
   const [phone, setPhone] = useState("");
   const {
     isModalUpdateOpen,
@@ -20,7 +19,6 @@ const UpdateUserModal = (props) => {
     if (dataUpdate) {
       setId(dataUpdate._id)
       setFullName(dataUpdate.fullName)
-      setPassword(dataUpdate.password)
       setPhone(dataUpdate.phone)
 
     }
@@ -47,7 +45,6 @@ const UpdateUserModal = (props) => {
     setIsModalUpdateOpen(false);
     setFullName("");
     setId("");
-    setPassword("");
     setPhone("");
     setDataUpdate(null);
   }
