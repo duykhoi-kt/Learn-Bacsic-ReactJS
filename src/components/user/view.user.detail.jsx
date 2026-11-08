@@ -1,5 +1,4 @@
-import { Drawer } from 'antd';
-import PropTypes from 'prop-types';
+import { Button, Drawer } from 'antd';
 
 const ViewUserDetail = (props) => {
     const { dataDetail, setDataDetail, isDetailOpen, setIsDetailOpen } = props;
@@ -8,6 +7,7 @@ const ViewUserDetail = (props) => {
         <>
 
             <Drawer
+                width={"40vw"}
                 title="User Detail"
                 closable={{ 'aria-label': 'Close Button' }}
                 onClose={() => {
@@ -24,6 +24,20 @@ const ViewUserDetail = (props) => {
                     <p>Email: {dataDetail.email}</p>
                     <br />
                     <p>Phone: {dataDetail.phone}</p>
+                    <br />
+                    <p> avatar:</p>
+                    <div>
+                        <img src={`${import.meta.env.VITE_BACKEND_URL}/images/avatar/${dataDetail.avatar}`} alt="Avatar" style={{ width: "100px", height: "100px", objectFit: "cover" }} />
+                    </div>
+                    <div>
+                        <Button>
+                            <label htmlFor='btnUpload' style={{ cursor: 'pointer' }}>Upload Avatar</label>
+                        </Button>
+
+                        <input type='file' hidden id='btnUpload' />
+                    </div>
+                    <br />
+                    {/* <Button type = 'primary'>Upload Avatar</Button> */}
                 </> :
                     <>
                         <p>Không có dữ liệu</p>
@@ -34,14 +48,3 @@ const ViewUserDetail = (props) => {
 }
 export default ViewUserDetail
 
-ViewUserDetail.propTypes = {
-    dataDetail: PropTypes.shape({
-        _id: PropTypes.string,
-        fullName: PropTypes.string,
-        email: PropTypes.string,
-        phone: PropTypes.string,
-    }),
-    setDataDetail: PropTypes.func.isRequired,
-    isDetailOpen: PropTypes.bool.isRequired,
-    setIsDetailOpen: PropTypes.func.isRequired,
-};
